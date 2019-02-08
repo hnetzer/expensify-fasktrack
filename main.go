@@ -2,12 +2,12 @@ package main
 
 import (
 	"encoding/csv"
+	"encoding/json"
 	"fmt"
 	"io"
 	"log"
-	"os"
 	"net/http"
-	"encoding/json"
+	"os"
 	"strconv"
 	"strings"
 )
@@ -123,14 +123,14 @@ func main() {
 	}
 
 	requestBody := "requestJobDescription=" + string(b)
-  fmt.Println(requestBody)
+	fmt.Println(requestBody)
 
 	expensifyEndpoint := "https://integrations.expensify.com/Integration-Server/ExpensifyIntegrations"
 
 	resp, err := http.Post(expensifyEndpoint, "application/json", strings.NewReader(requestBody))
-  if err != nil {
+	if err != nil {
 		log.Fatal(err)
 	}
 
-  fmt.Println(resp)
+	fmt.Println(resp)
 }
